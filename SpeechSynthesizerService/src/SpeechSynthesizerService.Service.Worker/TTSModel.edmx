@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TTSMessage">
+          <Key>
+            <PropertyRef Name="TTSMessageId" />
+          </Key>
+          <Property Name="TTSMessageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ProcessedDate" Type="datetime" />
+          <Property Name="VoiceGenderId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Filename" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="VoiceGender">
+          <Key>
+            <PropertyRef Name="VoiceGenderId" />
+          </Key>
+          <Property Name="VoiceGenderId" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TTSMessage_VoiceGender">
+          <End Role="VoiceGender" Type="Self.VoiceGender" Multiplicity="1" />
+          <End Role="TTSMessage" Type="Self.TTSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoiceGender">
+              <PropertyRef Name="VoiceGenderId" />
+            </Principal>
+            <Dependent Role="TTSMessage">
+              <PropertyRef Name="VoiceGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="TTSMessage" EntityType="Self.TTSMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoiceGender" EntityType="Self.VoiceGender" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TTSMessage_VoiceGender" Association="Self.FK_TTSMessage_VoiceGender">
+            <End Role="VoiceGender" EntitySet="VoiceGender" />
+            <End Role="TTSMessage" EntitySet="TTSMessage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TTSMessage">
+          <Key>
+            <PropertyRef Name="TTSMessageId" />
+          </Key>
+          <Property Name="TTSMessageId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProcessedDate" Type="DateTime" Precision="3" />
+          <Property Name="VoiceGenderId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Filename" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VoiceGender" Relationship="Self.FK_TTSMessage_VoiceGender" FromRole="TTSMessage" ToRole="VoiceGender" />
+        </EntityType>
+        <EntityType Name="VoiceGender">
+          <Key>
+            <PropertyRef Name="VoiceGenderId" />
+          </Key>
+          <Property Name="VoiceGenderId" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TTSMessages" Relationship="Self.FK_TTSMessage_VoiceGender" FromRole="VoiceGender" ToRole="TTSMessage" />
+        </EntityType>
+        <Association Name="FK_TTSMessage_VoiceGender">
+          <End Role="VoiceGender" Type="Self.VoiceGender" Multiplicity="1" />
+          <End Role="TTSMessage" Type="Self.TTSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoiceGender">
+              <PropertyRef Name="VoiceGenderId" />
+            </Principal>
+            <Dependent Role="TTSMessage">
+              <PropertyRef Name="VoiceGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TTSMessages" EntityType="Self.TTSMessage" />
+          <EntitySet Name="VoiceGenders" EntityType="Self.VoiceGender" />
+          <AssociationSet Name="FK_TTSMessage_VoiceGender" Association="Self.FK_TTSMessage_VoiceGender">
+            <End Role="VoiceGender" EntitySet="VoiceGenders" />
+            <End Role="TTSMessage" EntitySet="TTSMessages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="TTSEntities">
+          <EntitySetMapping Name="TTSMessages">
+            <EntityTypeMapping TypeName="Model.TTSMessage">
+              <MappingFragment StoreEntitySet="TTSMessage">
+                <ScalarProperty Name="TTSMessageId" ColumnName="TTSMessageId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ProcessedDate" ColumnName="ProcessedDate" />
+                <ScalarProperty Name="VoiceGenderId" ColumnName="VoiceGenderId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoiceGenders">
+            <EntityTypeMapping TypeName="Model.VoiceGender">
+              <MappingFragment StoreEntitySet="VoiceGender">
+                <ScalarProperty Name="VoiceGenderId" ColumnName="VoiceGenderId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

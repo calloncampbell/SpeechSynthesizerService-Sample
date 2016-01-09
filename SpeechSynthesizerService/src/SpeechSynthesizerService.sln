@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechSynthesizerService.TestClient", "SpeechSynthesizerService.TestClient\SpeechSynthesizerService.TestClient.csproj", "{7D0DE659-4DDB-45C8-8FB1-8E1B1005719F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechSynthesizerService.Service.Worker", "SpeechSynthesizerService.Service.Worker\SpeechSynthesizerService.Service.Worker.csproj", "{48303AE7-A85F-4CEF-AB88-4016D74151C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechSynthesizerService.Service", "SpeechSynthesizerService.Service\SpeechSynthesizerService.Service.csproj", "{8716B8EF-2DA4-4B05-B1CC-D95E5AE6B05E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SpeechSynthesizerService.Database", "SpeechSynthesizerService.Database\SpeechSynthesizerService.Database.sqlproj", "{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D0DE659-4DDB-45C8-8FB1-8E1B1005719F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0DE659-4DDB-45C8-8FB1-8E1B1005719F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0DE659-4DDB-45C8-8FB1-8E1B1005719F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0DE659-4DDB-45C8-8FB1-8E1B1005719F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48303AE7-A85F-4CEF-AB88-4016D74151C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48303AE7-A85F-4CEF-AB88-4016D74151C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48303AE7-A85F-4CEF-AB88-4016D74151C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48303AE7-A85F-4CEF-AB88-4016D74151C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8716B8EF-2DA4-4B05-B1CC-D95E5AE6B05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8716B8EF-2DA4-4B05-B1CC-D95E5AE6B05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8716B8EF-2DA4-4B05-B1CC-D95E5AE6B05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8716B8EF-2DA4-4B05-B1CC-D95E5AE6B05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A342ED9-7B14-4F6B-B088-E34606D1F0F6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
