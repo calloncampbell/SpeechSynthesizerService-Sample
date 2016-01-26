@@ -1,1 +1,1 @@
-# Blog-Samples
+# Speech Synthesizer Service Sample
